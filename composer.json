@@ -1,0 +1,36 @@
+{
+    "name": "andreas22/omnipay-fasapay",
+    "type": "library",
+    "description": "Fasapay driver for the Omnipay payment processing library",
+    "keywords": [
+        "fasapay",
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "transfer"
+    ],
+    "homepage": "https://github.com/andreas22/omnipay-fasapay",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andreas Christodoulou",
+            "email": "ac@digitzone.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\Fasapay\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}

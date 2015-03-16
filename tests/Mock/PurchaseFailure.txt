@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fasa_response id="1311059195" date_time="2011-07-19T14:06:35+07:00">
+    <errors id="tid3" mode="transfer" code="40600">
+        <data>
+            <code>40605</code>
+            <attribute>id_kurensi</attribute>
+            <message>Kurensi tidak boleh kosong.</message>
+        </data>
+        <data>
+            <code>40601</code>
+            <attribute>to</attribute>
+            <message>Tidak ada User dengan Nomor Akun FP89681</message>
+        </data>
+        <data>
+            <code>40602</code>
+            <attribute>jumlah</attribute>
+            <message>Jumlah melebihi batas yg di ijinkan.</message>
+        </data>
+    </errors>
+</fasa_response>

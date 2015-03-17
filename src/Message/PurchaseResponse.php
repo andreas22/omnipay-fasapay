@@ -31,7 +31,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
      */
     public function getRedirectMethod()
     {
-        return OAUTH_HTTP_METHOD_POST;
+        return 'post';
     }
 
     /**

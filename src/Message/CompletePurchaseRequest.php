@@ -29,7 +29,7 @@ class CompletePurchaseRequest extends AbstractRequest
     {
         // Validation is only for advance mode
 
-        $this->validate($data);
+        $this->validateHash($data);
 
         return $this->response = new CompletePurchaseResponse($this, $data);
     }
@@ -37,7 +37,7 @@ class CompletePurchaseRequest extends AbstractRequest
     /*
      * Check if response is valid, only for advance mode
      */
-    public function validate($data)
+    public function validateHash($data)
     {
         $fpHash = isset($data['fp_hash']) ? $data['fp_hash'] : null;
 

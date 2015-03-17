@@ -2,8 +2,14 @@
 
 namespace Omnipay\Fasapay;
 
+use Omnipay\Fasapay\Helpers\Security;
 use Omnipay\Tests\GatewayTestCase;
 
+/**
+ * Class GatewayTest
+ * @package Omnipay\Fasapay
+ *
+ */
 class GatewayTest extends GatewayTestCase
 {
     /**
@@ -106,14 +112,15 @@ class GatewayTest extends GatewayTestCase
             'fp_merchant_ref' => '1311059195',
         );
 
-        $string = implode(':', array($responseParams['fp_paidto'],
-                                    $responseParams['fp_paidby'],
-                                    $responseParams['fp_store'],
-                                    $responseParams['fp_amnt'],
-                                    $responseParams['fp_batchnumber'],
-                                    $responseParams['fp_currency'],
-                                    $secret));
-        $responseParams['fp_hash'] = hash('sha256', $string);
+        $hash = Security::getHash(array($responseParams['fp_paidto'],
+            $responseParams['fp_paidby'],
+            $responseParams['fp_store'],
+            $responseParams['fp_amnt'],
+            $responseParams['fp_batchnumber'],
+            $responseParams['fp_currency'],
+            $secret));
+
+        $responseParams['fp_hash'] = $hash;
 
         $request = $this->gateway->completePurchase($responseParams);
         $request->setSecret($secret);

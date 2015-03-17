@@ -4,6 +4,7 @@ namespace Omnipay\Fasapay\Message;
 
 use Guzzle\Http\ClientInterface;
 use Omnipay\Common\Message\AbstractRequest;
+use Omnipay\Fasapay\Helpers\Security;
 
 /**
  * Dummy Authorize Request
@@ -63,8 +64,7 @@ class CompletePurchaseRequest extends AbstractRequest
             $secret
         );
 
-        $string = implode(':', $response);
-        $hash = hash('sha256', $string);
+        $hash = Security::getHash($response);
 
         if(strcmp($fpHash, $hash) !== 0)
         {

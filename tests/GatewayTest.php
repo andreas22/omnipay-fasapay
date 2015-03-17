@@ -24,6 +24,52 @@ class GatewayTest extends GatewayTestCase
         $this->gateway = new Gateway($this->getHttpClient(), $this->getHttpRequest());
     }
 
+    public function testPurchaseGetterSetters()
+    {
+        $request = $this->gateway->purchase();
+
+        $request->setTestMode(false);
+        $request->setCurrency('IDR');
+        $request->setFeeMode('FiS');
+        $request->setAccountFrom('FROM');
+        $request->setAccountTo('TO');
+        $request->setComments('Comments');
+        $request->setStore('Store');
+        $request->setAmount(100.0);
+        $request->setCancelUrl('cancel.url');
+        $request->setNotifyUrl('notify.url');
+        $request->setReturnUrl('success.url');
+        $request->setSuccessMethod('get');
+        $request->setStatusMethod('get');
+        $request->setFailMethod('get');
+        $request->setTransactionId('11111');
+        $request->setTransactionReference('aaada');
+        $request->setItem('Muasds');
+
+        $this->assertTrue(!$request->getTestMode());
+        $this->assertEquals($request->getCurrency(), 'IDR');
+        $this->assertEquals($request->getFeeMode(), 'FiS');
+        $this->assertEquals($request->getAccountFrom(), 'FROM');
+        $this->assertEquals($request->getAccountTo(), 'TO');
+        $this->assertEquals($request->getComments(), 'Comments');
+        $this->assertEquals($request->getStore(), 'Store');
+        $this->assertEquals($request->getAmount(), 100.0);
+        $this->assertEquals($request->getCancelUrl(), 'cancel.url');
+        $this->assertEquals($request->getNotifyUrl(), 'notify.url');
+        $this->assertEquals($request->getReturnUrl(), 'success.url');
+        $this->assertEquals($request->getSuccessMethod(), 'get');
+        $this->assertEquals($request->getStatusMethod(), 'get');
+        $this->assertEquals($request->getFailMethod(), 'get');
+        $this->assertEquals($request->getTransactionId(), '11111');
+        $this->assertEquals($request->getTransactionReference(), 'aaada');
+        $this->assertEquals($request->getItem(), 'Muasds');
+
+        $this->assertEquals($request->getEndpoint(), $request->liveEndpoint);
+
+        $request->setTestMode(true);
+        $this->assertEquals($request->getEndpoint(), $request->sandboxEndpoint);
+    }
+
     public function testPurchaseSimpleMode()
     {
         $purchaseOptions = array(
@@ -45,12 +91,11 @@ class GatewayTest extends GatewayTestCase
         );
 
         $request = $this->gateway->purchase($purchaseOptions);
-        $requestData = $request->getData();
         $response = $request->send();
 
         //Response validation
         $this->assertTrue($response->isRedirect());
-        $this->assertTrue($response->isSuccessful());
+        $this->assertTrue(!$response->isSuccessful());
     }
 
     public function testPurchaseAdvanceMode()
@@ -66,12 +111,11 @@ class GatewayTest extends GatewayTestCase
         );
 
         $request = $this->gateway->purchase($purchaseOptions);
-        $requestData = $request->getData();
         $response = $request->send();
 
         //Response validation
         $this->assertTrue($response->isRedirect());
-        $this->assertTrue($response->isSuccessful());
+        $this->assertTrue(!$response->isSuccessful());
     }
 
     public function testCompletePurchaseSimpleModeSuccess()

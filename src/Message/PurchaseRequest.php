@@ -9,9 +9,9 @@ use Omnipay\Common\Message\AbstractRequest;
  */
 class PurchaseRequest extends AbstractRequest
 {
-    protected $liveEndpoint = 'https://sci.fasapay.com/';
+    public $liveEndpoint = 'https://sci.fasapay.com/';
 
-    protected $sandboxEndpoint = 'https://sandbox.fasapay.com/sci/';
+    public $sandboxEndpoint = 'https://sandbox.fasapay.com/sci/';
 
     public function getData()
     {

@@ -2,7 +2,6 @@
 
 namespace Omnipay\Fasapay\Message;
 
-use Guzzle\Http\ClientInterface;
 use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\Fasapay\Helpers\Security;
 
@@ -34,10 +33,15 @@ class CompletePurchaseRequest extends AbstractRequest
         return $this->response = new CompletePurchaseResponse($this, $data);
     }
 
-    /*
+    /**
      * Check if response is valid, only for advance mode
+     *
+     * @example data = [fp_paidto, fp_paidby, fp_store, fp_amnt, fp_batchnumber, fp_currency]
+     * @param array $data
+     * @return bool
+     * @throws \Exception
      */
-    public function validateHash($data)
+    public function validateHash(array $data)
     {
         $fpHash = isset($data['fp_hash']) ? $data['fp_hash'] : null;
 
@@ -51,7 +55,7 @@ class CompletePurchaseRequest extends AbstractRequest
 
         if(empty($secret))
         {
-            throw new \Exception("Secret is required");
+            throw new \Exception("Secret key is required!");
         }
 
         $response = array(
@@ -68,7 +72,7 @@ class CompletePurchaseRequest extends AbstractRequest
 
         if(strcmp($fpHash, $hash) !== 0)
         {
-            throw new \Exception("Invalid response");
+            throw new \Exception("Invalid response! Secret key is wrong!");
         }
 
         return true;

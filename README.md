@@ -2,6 +2,7 @@
 
 **Fasapay driver for the Omnipay PHP payment processing library**
 
+[![Build Status](https://travis-ci.org/andreas22/omnipay-fasapay.svg?branch=master)](https://travis-ci.org/andreas22/omnipay-fasapay)
 [![Latest Stable Version](https://poser.pugx.org/andreas22/omnipay-fasapay/v/stable.svg)](https://packagist.org/packages/andreas22/omnipay-fasapay) 
 [![Total Downloads](https://poser.pugx.org/andreas22/omnipay-fasapay/downloads.svg)](https://packagist.org/packages/andreas22/omnipay-fasapay) 
 [![Latest Unstable Version](https://poser.pugx.org/andreas22/omnipay-fasapay/v/unstable.svg)](https://packagist.org/packages/andreas22/omnipay-fasapay) 

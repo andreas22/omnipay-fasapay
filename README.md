@@ -2,6 +2,11 @@
 
 **Fasapay driver for the Omnipay PHP payment processing library**
 
+[![Latest Stable Version](https://poser.pugx.org/andreas22/omnipay-fasapay/v/stable.svg)](https://packagist.org/packages/andreas22/omnipay-fasapay) 
+[![Total Downloads](https://poser.pugx.org/andreas22/omnipay-fasapay/downloads.svg)](https://packagist.org/packages/andreas22/omnipay-fasapay) 
+[![Latest Unstable Version](https://poser.pugx.org/andreas22/omnipay-fasapay/v/unstable.svg)](https://packagist.org/packages/andreas22/omnipay-fasapay) 
+[![License](https://poser.pugx.org/andreas22/omnipay-fasapay/license.svg)](https://packagist.org/packages/andreas22/omnipay-fasapay)
+
 [Omnipay](https://github.com/thephpleague/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements Fasapay support for Omnipay.
 

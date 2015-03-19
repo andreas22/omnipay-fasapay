@@ -92,10 +92,15 @@ class GatewayTest extends GatewayTestCase
 
         $request = $this->gateway->purchase($purchaseOptions);
         $response = $request->send();
+        $redirectUrl = $response->getRedirectUrl();
+        $redirectData = $response->getRedirectData();
 
         //Response validation
+        $this->assertEquals('POST', $response->getRedirectMethod());
+        $this->assertTrue(!empty($redirectUrl));
         $this->assertTrue($response->isRedirect());
         $this->assertTrue(!$response->isSuccessful());
+        $this->assertTrue(!empty($redirectData));
     }
 
     public function testPurchaseAdvanceMode()
@@ -173,6 +178,7 @@ class GatewayTest extends GatewayTestCase
         //Response validation
         $this->assertTrue($response->isSuccessful());
         $this->assertSame($response->getTransactionReference(), $responseParams['fp_batchnumber']);
+        $this->assertSame($secret, $request->getSecret());
     }
 
     /**

@@ -45,16 +45,14 @@ class CompletePurchaseRequest extends AbstractRequest
     {
         $fpHash = isset($data['fp_hash']) ? $data['fp_hash'] : null;
 
-        if(empty($fpHash))
-        {
+        if (empty($fpHash)) {
             return true;
         }
 
         $parameters = $this->getParameters();
         $secret = isset($parameters['secret']) ? $parameters['secret'] : '';
 
-        if(empty($secret))
-        {
+        if (empty($secret)) {
             throw new \Exception("Secret key is required!");
         }
 
@@ -70,8 +68,7 @@ class CompletePurchaseRequest extends AbstractRequest
 
         $hash = Security::getHash($response);
 
-        if(strcmp($fpHash, $hash) !== 0)
-        {
+        if (strcmp($fpHash, $hash) !== 0) {
             throw new \Exception("Invalid response! Secret key is wrong!");
         }
 

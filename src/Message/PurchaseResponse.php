@@ -41,8 +41,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
     {
         $data = $this->getData();
         foreach ($data as $key => $value) {
-            if(empty($value))
-            {
+            if (empty($value)) {
                 unset($data[$key]);
             }
         }

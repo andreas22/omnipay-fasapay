@@ -2,7 +2,8 @@
 
 namespace Omnipay\Fasapay\Helpers;
 
-class Security {
+class Security
+{
 
     /**
      * Get sha256 hash

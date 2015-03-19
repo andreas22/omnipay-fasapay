@@ -201,7 +201,7 @@ class GatewayTest extends GatewayTestCase
 
     /**
      * @expectedException        \Exception
-     * @expectedExceptionMessage Secret is required
+     * @expectedExceptionMessage Secret key is required!
      */
     public function testCompletePurchaseAdvanceModeMissingSecret()
     {

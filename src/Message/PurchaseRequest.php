@@ -45,7 +45,7 @@ class PurchaseRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return ($this->getTestMode()) ? $this->sandboxEndpoint : $this->liveEndpoint;
+        return ((bool)$this->getTestMode()) ? $this->sandboxEndpoint : $this->liveEndpoint;
     }
 
     public function getAccountTo()
@@ -93,17 +93,7 @@ class PurchaseRequest extends AbstractRequest
         return $this->getParameter('comments');
     }
 
-    public function getTestMode()
-    {
-        return (bool) $this->getParameter('testMode');
-    }
-
     // Setters
-
-    public function setTestMode($value)
-    {
-        return $this->setParameter('testMode', $value);
-    }
 
     public function setAccountTo($value)
     {

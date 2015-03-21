@@ -143,6 +143,7 @@ class GatewayTest extends GatewayTestCase
         //Response validation
         $this->assertTrue($response->isSuccessful());
         $this->assertSame($response->getTransactionReference(), $responseParams['fp_batchnumber']);
+        $this->assertTrue(sizeof($request->getData()) == 0);
     }
 
     public function testCompletePurchaseAdvanceModeSuccess()
